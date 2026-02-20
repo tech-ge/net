@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo | Submit Work</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Submit Completed Work</h1>
+        <div class="nav-right">
+            <span id="username"></span>
+            <button class="btn-logout" onclick="goBack()">← Back</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>📥 Submit Your Completed Work</h2>
+            
+            <div class="info-box">
+                <p>Select an approved bid and submit your completed work for admin review.</p>
+            </div>
+
+            <form id="submissionForm">
+                <div class="form-group">
+                    <label>Select Approved Bid</label>
+                    <select id="bidId" required>
+                        <option value="">-- Loading approved bids --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Work Content (300-50000 characters)</label>
+                    <p class="hint">Submit your full blog post or survey content. It will be reviewed by admins before payment.</p>
+                    <textarea id="workContent" placeholder="Paste your completed work here..." rows="12" required></textarea>
+                    <small id="characterCount">0 / 300-50000 characters</small>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Work for Review</button>
+                <p id="messageBox" class="message"></p>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>📋 Your Submissions</h2>
+            <div id="submissionsList" class="submissions-list">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/submit-work.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>TechGeo Dashboard</h1>
+        <div class="nav-right">
+            <span id="username"></span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- Wallet Section -->
+            <section class="card">
+                <h2>💰 Your Wallet</h2>
+                <div class="wallet-info">
+                    <div class="wallet-item">
+                        <label>Total Balance</label>
+                        <p class="balance" id="totalBalance">0 BOB</p>
+                    </div>
+                    <div class="wallet-item">
+                        <label>Referral Earnings</label>
+                        <p id="referralEarnings">0 BOB</p>
+                    </div>
+                    <div class="wallet-item">
+                        <label>Task Earnings</label>
+                        <p id="taskEarnings">0 BOB</p>
+                    </div>
+                    <div class="wallet-item">
+                        <label>Withdrawn</label>
+                        <p id="amountWithdrawn">0 BOB</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Membership Section -->
+            <section class="card">
+                <h2>📦 Your Package</h2>
+                <div class="package-info">
+                    <p><strong>Current: <span id="package">Basic</span></strong></p>
+                    <div id="premiumSection">
+                        <p>Upgrade to <strong>Premium</strong> to unlock task bidding!</p>
+                        <p class="hint">Premium: 150 BOB (you've already paid the 600 BOB joining fee)</p>
+                        <button class="btn-primary" onclick="upgradePremium()" id="upgradeBtn">Upgrade to Premium</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referrals Section -->
+            <section class="card">
+                <h2>🤝 Your Network</h2>
+                <div class="referral-info">
+                    <div class="referral-item">
+                        <label>Active Direct Referrals</label>
+                        <p id="activeDirectReferrals" class="big-number">0</p>
+                    </div>
+                    <div class="referral-item">
+                        <label>Total Referrals Ever</label>
+                        <p id="totalReferralCount">0</p>
+                    </div>
+                    <p class="hint">✅ You need 2 active referrals to bid on tasks</p>
+                </div>
+            </section>
+
+            <!-- Task Stats Section -->
+            <section class="card">
+                <h2>📊 Task Statistics</h2>
+                <div class="stats">
+                    <p>Total Bids: <strong id="totalBids">0</strong></p>
+                    <p>Pending Bids: <strong id="pendingBids">0</strong></p>
+                    <p>Approved Bids: <strong id="approvedBids">0</strong></p>
+                    <p>Bids in Last 48h: <strong id="recentBidsIn48h">0</strong>/5</p>
+                    <p>Submissions Approved: <strong id="approvedSubmissions">0</strong></p>
+                    <p>Earned from Tasks: <strong id="submissionsEarned">0 BOB</strong></p>
+                </div>
+            </section>
+
+            <!-- Bidding Section -->
+            <section class="card">
+                <h2>🎯 Bidding & Work</h2>
+                <div id="biddingEligibility">
+                    <p id="eligibilityMessage"></p>
+                    <div id="actionButtons">
+                        <button class="btn-primary" onclick="location.href='bid.html'">Place a Bid</button>
+                        <button class="btn-secondary" onclick="location.href='submit-work.html'">Submit Completed Work</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Withdrawal Section -->
+            <section class="card">
+                <h2>💸 Withdrawal</h2>
+                <div class="withdrawal-form">
+                    <p>Minimum Balance Required: <strong>400 BOB</strong></p>
+                    <div id="withdrawalStatus" class="hint"></div>
+                    <input type="number" id="withdrawAmount" placeholder="Amount in BOB" min="400" step="1">
+                    <button class="btn-primary" onclick="requestWithdrawal()">Request Withdrawal</button>
+                </div>
+            </section>
+
+            <!-- Account Info Section -->
+            <section class="card">
+                <h2>📋 Account Information</h2>
+                <div class="account-info">
+                    <p><strong>Username:</strong> <span id="displayUsername"></span></p>
+                    <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+                    <p><strong>Sponsor:</strong> <span id="displayReferrer"></span></p>
+                    <p><strong>Member Since:</strong> <span id="memberSince"></span></p>
+                </div>
+                <div class="account-actions" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <button class="btn-secondary" onclick="openChangePasswordModal()">🔐 Change Password</button>
+                    <button class="btn-primary" onclick="shareReferralLink()">🔗 Share Referral Link</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="passwordModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordModal')">&times;</span>
+            <h3>🔐 Change Password</h3>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password (min 6 characters)" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                </div>
+                <p id="passwordMessage" class="message"></p>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary">Change Password</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('passwordModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

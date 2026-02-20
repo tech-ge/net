@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo | Payment - 600 BOB</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>TechGeo Payment</h1>
+    </nav>
+
+    <div class="container">
+        <div class="auth-card" style="max-width: 600px;">
+            <h2>💳 Complete Your Registration</h2>
+            
+            <div class="info-box">
+                <h3>Joining Fee Payment</h3>
+                <p><strong>Amount:</strong> <span style="font-size: 2rem; color: var(--success);">600 BOB</span></p>
+                <p><strong>Username:</strong> <span id="displayUsername"></span></p>
+                <p><strong>Reference ID:</strong> <span id="displayUserId"></span></p>
+            </div>
+
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="paymentMethod" required>
+                        <option value="">-- Select Payment Method --</option>
+                        <option value="till">💳 TILL (Lipa Na Mpesa Till)</option>
+                        <option value="bank">🏦 Bank Transfer</option>
+                        <option value="mobile">📱 Mobile Money</option>
+                        <option value="cash">💵 Cash (In-Person)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="paymentDetails">
+                    <p class="hint">Payment instructions will appear here based on your selection.</p>
+                </div>
+
+                <div class="info-box" style="background: #d4edda; border-color: var(--success);">
+                    <p>⚠️ <strong>Important:</strong> This is a placeholder payment interface.</p>
+                    <p>In production, integrate with:</p>
+                    <ul>
+                        <li>Stripe</li>
+                        <li>PayPal</li>
+                        <li>Local Bolivia payment provider</li>
+                        <li>QR code payments</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label>Transaction/Reference Number</label>
+                    <input type="text" id="transactionId" placeholder="Enter payment reference after sending" required>
+                </div>
+
+                <button type="submit" class="btn-pay">Confirm Payment & Activate Account</button>
+                <p id="messageBox" class="message"></p>
+            </form>
+
+            <button class="btn-secondary" onclick="window.history.back()" style="width: 100%; margin-top: 1rem;">← Back</button>
+        </div>
+
+        <div class="card" style="max-width: 600px; margin: 2rem auto;">
+            <h3>What Happens After Payment?</h3>
+            <ol>
+                <li>Your account will be activated immediately</li>
+                <li>Your sponsor will receive 200 BOB referral commission</li>
+                <li>You'll receive access to the dashboard</li>
+                <li>Your referral link will be ready to share</li>
+                <li>You can start collecting referrals right away</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="js/payment.js"></script>
+</body>
+</html>

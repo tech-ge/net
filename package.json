@@ -1,0 +1,29 @@
+{
+  "name": "techgeo",
+  "version": "1.0.0",
+  "description": "TechGeo - Networking & Freelance Platform with 4-Level MLM",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "mlm",
+    "networking",
+    "freelance",
+    "referral",
+    "tasks",
+    "vercel",
+    "serverless"
+  ],
+  "author": "TechGeo Team",
+  "license": "Proprietary",
+  "dependencies": {
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}

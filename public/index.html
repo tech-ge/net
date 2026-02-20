@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo | Networking & Freelance Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .hero-buttons button {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .btn-register {
+            background: white;
+            color: #667eea;
+        }
+        .btn-register:hover {
+            transform: scale(1.05);
+            background: #f0f0f0;
+        }
+        .btn-login {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        .btn-login:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.1);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .info-section {
+            background: #f0f4ff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🌍 TechGeo</h1>
+        <div class="nav-right">
+            <button class="btn-login" onclick="window.location.href='login.html'" style="background: none; border: none; color: white; cursor: pointer; font-size: 1em;">Login</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to TechGeo</h1>
+        <p>Join our networking & freelance platform. Earn through referrals and complete tasks.</p>
+        <div class="hero-buttons">
+            <button class="btn-register" onclick="window.location.href='register.html'">🚀 Create Account</button>
+            <button class="btn-login" onclick="window.location.href='login.html'">📱 Login</button>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Network & Earn</h3>
+            <p>Build your referral network and earn commissions through 4 levels of the MLM system.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💼</div>
+            <h3>Freelance Tasks</h3>
+            <p>Bid on blog writing and survey tasks. Earn money for completing quality work.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Get Premium</h3>
+            <p>Upgrade to Premium to unlock exclusive opportunities and earn more rewards.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Track Earnings</h3>
+            <p>Monitor your referral earnings, task payments, and withdraw your balance anytime.</p>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2>How It Works</h2>
+        <p><strong>Step 1:</strong> Create an account with a referrer code to join the network.</p>
+        <p><strong>Step 2:</strong> Earn referral bonuses as you invite others to join TechGeo.</p>
+        <p><strong>Step 3:</strong> Upgrade to Premium and bid on freelance tasks to earn additional income.</p>
+        <p><strong>Step 4:</strong> Request withdrawals of your earnings anytime.</p>
+    </section>
+
+    <div class="container" style="padding: 40px 20px; text-align: center; background: white;">
+        <h2 style="color: #667eea; margin-bottom: 20px;">Ready to Start?</h2>
+        <div class="hero-buttons" style="justify-content: center;">
+            <button class="btn-register" onclick="window.location.href='register.html'">🚀 Join Now</button>
+            <button class="btn-login" onclick="window.location.href='login.html'">Already a Member? Login</button>
+        </div>
+    </div>
+
+    <footer style="background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px;">
+        <p>&copy; 2026 TechGeo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Redirect logged-in users to dashboard
+        if (localStorage.getItem('userId')) {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

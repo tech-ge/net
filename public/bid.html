@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo | Place a Bid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Place a Bid</h1>
+        <div class="nav-right">
+            <span id="username"></span>
+            <button class="btn-logout" onclick="goBack()">← Back</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>📝 Submit Your Bid Sample</h2>
+            
+            <div class="info-box">
+                <p><strong>Available Tasks:</strong></p>
+                <ul>
+                    <li>📚 Blog Post: <strong>30 BOB</strong> (minimum 300 characters)</li>
+                    <li>📊 Survey: <strong>20 BOB</strong> (minimum 300 characters)</li>
+                </ul>
+                <p><strong>⚠️ Rules:</strong> Maximum 5 bids per 48 hours. You must have Premium Package + 2 active referrals.</p>
+            </div>
+
+            <form id="bidForm">
+                <div class="form-group">
+                    <label>Select Task Type</label>
+                    <select id="taskType" required>
+                        <option value="">-- Choose a Task --</option>
+                        <option value="Blog">📚 Blog Post (30 BOB)</option>
+                        <option value="Survey">📊 Survey (20 BOB)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Sample Text (50-2000 characters)</label>
+                    <p class="hint">Submit a sample of your work quality. This helps admins review and approve your bid.</p>
+                    <textarea id="sampleText" placeholder="Write your sample here..." rows="8" required></textarea>
+                    <small id="characterCount">0 / 50-2000 characters</small>
+                </div>
+
+                <div class="stats-info">
+                    <p>Bids in last 48 hours: <strong id="recentBids">0</strong>/5</p>
+                    <p>Premium: <span id="premiumStatus">Loading...</span></p>
+                    <p>Active Referrals: <span id="referralStatus">Loading...</span></p>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Bid for Review</button>
+                <p id="messageBox" class="message"></p>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>📋 Your Recent Bids</h2>
+            <div id="bidsList" class="bids-list">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bid.js"></script>
+</body>
+</html>

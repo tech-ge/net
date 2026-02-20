@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGeo Admin | Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🔐 TechGeo Admin Panel</h1>
+        <div class="nav-right">
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="showTab('profits')">💹 Platform Profits</button>
+            <button class="tab-btn" onclick="showTab('bids')">📝 Pending Bids</button>
+            <button class="tab-btn" onclick="showTab('submissions')">📥 Submitted Work</button>
+            <button class="tab-btn" onclick="showTab('withdrawals')">💸 Withdrawals</button>
+        </div>
+
+        <!-- Profits Tab -->
+        <section id="profits-section" class="tab-content active">
+            <h2>💹 Platform Profits & Statistics</h2>
+            <p class="hint">Real-time earnings and financial overview of the TechGeo platform.</p>
+            
+            <div class="profits-grid">
+                <div class="profit-card success">
+                    <h3>Total Referral Earnings (Distributed)</h3>
+                    <p class="big-number" id="totalReferralEarnings">0 BOB</p>
+                    <small>From 4-level MLM commissions</small>
+                </div>
+
+                <div class="profit-card info">
+                    <h3>Total Task Earnings (Distributed)</h3>
+                    <p class="big-number" id="totalTaskEarnings">0 BOB</p>
+                    <small>From approved blog/survey submissions</small>
+                </div>
+
+                <div class="profit-card warning">
+                    <h3>Total Balance in System</h3>
+                    <p class="big-number" id="totalBalanceInSystem">0 BOB</p>
+                    <small>Pending user withdrawals</small>
+                </div>
+
+                <div class="profit-card danger">
+                    <h3>Total Withdrawn (Paid Out)</h3>
+                    <p class="big-number" id="totalWithdrawn">0 BOB</p>
+                    <small>Already paid to users</small>
+                </div>
+            </div>
+
+            <div class="profits-summary">
+                <h3>📊 Platform Summary</h3>
+                <table class="admin-table">
+                    <tbody>
+                        <tr>
+                            <td><strong>Active Users</strong></td>
+                            <td id="summaryActiveUsers">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Premium Users</strong></td>
+                            <td id="summaryPremiumUsers">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Users</strong></td>
+                            <td id="summaryTotalUsers">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Approved Submissions</strong></td>
+                            <td id="summaryApprovedSubmissions">0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Earned</strong></td>
+                            <td id="summaryTotalEarned">0 BOB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Outstanding</strong></td>
+                            <td id="summaryTotalOutstanding">0 BOB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Pending Bids Tab -->
+        <section id="bids-section" class="tab-content active">
+            <h2>Pending Bids (Sample Review)</h2>
+            <p class="hint">Review samples and approve/reject bids. Once approved, users can submit completed work.</p>
+            
+            <div id="bids-list" class="grid-container">
+                <p>Loading...</p>
+            </div>
+        </section>
+
+        <!-- Submitted Work Tab -->
+        <section id="submissions-section" class="tab-content">
+            <h2>Submitted Work (Content Review)</h2>
+            <p class="hint">Review completed submissions. Approving will add payment to user's balance.</p>
+
+            <div class="filter-controls">
+                <select id="submissionStatusFilter" onchange="loadSubmissions()">
+                    <option value="">All Statuses</option>
+                    <option value="Submitted">Submitted</option>
+                    <option value="Under Review">Under Review</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+
+            <div id="submissions-list" class="grid-container">
+                <p>Loading...</p>
+            </div>
+        </section>
+
+        <!-- Withdrawals Tab -->
+        <section id="withdrawals-section" class="tab-content">
+            <h2>Withdrawal Requests</h2>
+            <p class="hint">Review and approve/reject withdrawal requests. Minimum balance: 400 BOB</p>
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Requested Amount</th>
+                        <th>Current Balance</th>
+                        <th>Request Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="withdrawal-list">
+                    <tr><td colspan="7">Loading...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Modal for bid details -->
+    <div id="bidModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bidModal')">&times;</span>
+            <h3 id="bidModalTitle">Bid Details</h3>
+            <div id="bidModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Modal for submission details -->
+    <div id="submissionModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('submissionModal')">&times;</span>
+            <h3 id="submissionModalTitle">Submission Details</h3>
+            <div id="submissionModalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/admin-logic.js"></script>
+</body>
+</html>
